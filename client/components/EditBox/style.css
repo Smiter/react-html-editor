@@ -1,0 +1,23 @@
+.normal{
+  border: 2px solid transparent;
+  position: relative;
+  min-height: 200px;
+}
+.normal.hover{
+  border: 2px solid blue;
+}
+.editorwrap {
+  min-height: 200px;
+  border: 0;
+  outline: 0;
+}
+
+/*.editor_container{
+  padding-top: 50px;
+}*/
+
+.editorwrap:after{
+  color: black;
+}
+
+/*:global(.className) { background: red; }*/
