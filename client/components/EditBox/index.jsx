@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import style from './style.css'
 import classnames from 'classnames'
 import EditBoxOptions from '../EditBoxOptions'
+import * as blocktypes from '../../constants/blocktypes'
 
 class EditBox extends Component {
   constructor(props, context) {
@@ -45,15 +46,29 @@ class EditBox extends Component {
     this.initMediumEditor();
   }
 
-  render() {
+  getBlockByType(block){
+    let html = <div>undefined block type</div>
+    switch(block.type){
+      case blocktypes.TEXT:
+        html = <div className={style.editorwrap}></div>
+        break
+      case blocktypes.IMAGE:
+        html = <div><img width="100%" src={block.src} /></div>
+        break
+    }
+    return html
+  }
 
+  render() {
+    const { block } = this.props;
     const classes = classnames({
       [style.hover]: this.state.hover
     }, style.normal)
 
     return (
       <section onMouseEnter={::this.showEditToolbox} onMouseLeave={::this.HideEditToolbox} className={classes}>
-       <div className={style.editorwrap}></div>
+       {this.getBlockByType(block)}
+
        {this.state.hover?<EditBoxOptions {...this.props} />: null}
       </section>
     )

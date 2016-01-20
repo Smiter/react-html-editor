@@ -17,25 +17,14 @@ class Col extends Component {
 }
 
 class MainSection extends Component {
+
   constructor(props, context) {
     super(props, context)
   }
 
   render() {
     const { blocks, actions } = this.props
-    console.log(this.props)
- 
-    // return (
-    //   <section className={style.normal}>
-    //     <AddBlockBtn {...actions} index={0}/>
-    //     {todos.map((todo,index) =>
-    //       <div key={todo.id}>
-    //         <EditBox todo={todo} {...actions} />
-    //         <AddBlockBtn {...actions} index={index+1} />
-    //       </div>
-    //     )}
-    //   </section>
-    // )
+
     return (
       <section className={style.normal}>
         {blocks.map((row,row_idx) =>
@@ -55,6 +44,7 @@ class MainSection extends Component {
       </section>
     )
   }
+  
 }
 
 MainSection.propTypes = {

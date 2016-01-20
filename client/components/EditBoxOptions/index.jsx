@@ -3,7 +3,7 @@ import style from './style.css'
 
 class EditBoxOptions extends Component {
   render() {
-    const { deleteBlock, block } = this.props;
+    const { deleteBlock } = this.props;
     return (
       <section className={style.normal}>
         <div>
@@ -15,7 +15,6 @@ class EditBoxOptions extends Component {
 }
 
 EditBoxOptions.propTypes = {
-  block: PropTypes.object.isRequired,
   deleteBlock: PropTypes.func.isRequired
 }
 

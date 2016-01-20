@@ -1,18 +1,15 @@
 
 import { handleActions } from 'redux-actions'
+import * as blocktypes from '../constants/blocktypes'
 
 const initialState = [
   [
- 
-    [{ id: 0 }] 
-      
+    [{ type: blocktypes.TEXT}]       
   ],
-
   [
-    [{ id: 2 }],
-    [{ id: 3 }]
+    [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
+    [{ type: blocktypes.TEXT }]
   ]
-
 ]
 
 let id = 10;
@@ -22,20 +19,17 @@ export default handleActions({
     const {row_idx, col_idx, block_idx} = action.payload.indexes
     let a = [...state]
     let b = a[row_idx][col_idx];
-    b = [...b.slice(0, block_idx+1), {"id":id++}, ...b.slice(block_idx+1)]
+    b = [...b.slice(0, block_idx+1), { type: blocktypes.TEXT }, ...b.slice(block_idx+1)]
     a[row_idx][col_idx] = b
-    // console.log(a)
     return a
   },
 
   'delete block' (state, action) {
     const {row_idx, col_idx, block_idx} = action.payload.indexes
-    console.log(action.payload.indexes)
     let a = [...state]
     let b = a[row_idx][col_idx];
     b = [...b.slice(0, block_idx), ...b.slice(block_idx+1)]
     a[row_idx][col_idx] = b
-    console.log(a)
     return a
   }
 }, initialState)
