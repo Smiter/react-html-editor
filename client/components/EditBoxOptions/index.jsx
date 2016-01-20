@@ -7,7 +7,7 @@ class EditBoxOptions extends Component {
     return (
       <section className={style.normal}>
         <div>
-          <div onClick={() => deleteBlock(block.id)}>delete</div>
+          <div onClick={() => deleteBlock({"indexes": this.props.indexes})}>delete</div>
         </div>
       </section>
     )

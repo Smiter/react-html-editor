@@ -12,7 +12,7 @@ class AddBlockBtn extends Component {
   }
 
   addEditBox(text) {
-    this.props.addBlock({"index": this.props.index})
+    this.props.addBlock({"indexes": this.props.indexes})
     this.setState({"show_links": false})
   }
 
@@ -43,7 +43,7 @@ class AddBlockBtn extends Component {
 }
 
 AddBlockBtn.propTypes = {
-  index: PropTypes.number.isRequired
+  indexes: PropTypes.object.isRequired
 }
 
 export default AddBlockBtn
