@@ -53,7 +53,19 @@ class EditBox extends Component {
         html = <div className={style.editorwrap}></div>
         break
       case blocktypes.IMAGE:
-        html = <div><img width="100%" src={block.src} /></div>
+        html = <div>Upload image<input type="file" /></div>
+        break
+      case blocktypes.VIDEO:
+        html = ( <div><input type="text" placeholder="Insert video link" />
+          <input type="text" placeholder="width" />
+          <input type="text" placeholder="height" />
+        </div>)
+        break
+      case blocktypes.IFRAME:
+        html = ( <div><input type="text" placeholder="Insert iframe link" />
+          <input type="text" placeholder="width" />
+          <input type="text" placeholder="height" />
+        </div>)
         break
     }
     return html

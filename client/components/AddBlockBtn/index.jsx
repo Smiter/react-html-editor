@@ -40,7 +40,7 @@ class AddBlockBtn extends Component {
     }else{
       element = (
         <button onClick={::this.showLinks} className={style["add-button"]}>
-        Add block
+        Add block section
         </button>
       )
     }
