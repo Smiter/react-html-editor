@@ -23,7 +23,7 @@ class MainSection extends Component {
   }
 
   render() {
-    const { blocks, actions } = this.props
+    const { blocks: {blocks, layout}, actions } = this.props
 
     return (
       <section className={style.normal}>
@@ -41,10 +41,11 @@ class MainSection extends Component {
           
           )
         )}
+        <LayoutBoxes {...this.props } />
       </section>
     )
   }
-  
+
 }
 
 MainSection.propTypes = {
