@@ -28,7 +28,8 @@ const layouts = [
 ]
 const initialState = {
   'blocks': layouts[0],
-  'layout': 0
+  'layout': 0,
+  'showLayouts': true
 }
 
 let id = 10;
@@ -56,8 +57,13 @@ export default handleActions({
     const layout = action.payload;
     return {
       layout: layout,
-      blocks: layouts[layout]
+      blocks: layouts[layout],
+      showLayouts: false
     }
+  },
+
+  'show layouts' (state, action) {
+    return Object.assign({}, state, {showLayouts: true})
   }
 
 

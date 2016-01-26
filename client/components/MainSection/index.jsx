@@ -20,28 +20,42 @@ class MainSection extends Component {
 
   constructor(props, context) {
     super(props, context)
+    this.state = {
+      is_show_layouts: false
+    }
+  }
+
+  selectLayout(){
+    const { actions } = this.props
+    actions.showLayouts();
   }
 
   render() {
-    const { blocks: {blocks, layout}, actions } = this.props
+    const { blocks: {blocks, layout, showLayouts}, actions } = this.props
 
     return (
       <section className={style.normal}>
-        {blocks.map((row,row_idx) =>
-          row.map((col,col_idx) => 
-            <Col cols={row.length}>
-              { col.map((block,block_idx) =>
-                  <div>
-                    <EditBox block={block} indexes={{row_idx, col_idx, block_idx}} {...actions} />
-                    <AddBlockBtn {...actions} indexes={{row_idx, col_idx, block_idx}} />
-                  </div>
-                )
-              } 
-            </Col>
-          
-          )
-        )}
-        <LayoutBoxes {...this.props } />
+        <button onClick={this.selectLayout.bind(this)}>select layout</button>
+        { 
+          !showLayouts ? 
+            blocks.map((row,row_idx) =>
+              row.map((col,col_idx) => 
+                <Col cols={row.length}>
+                  { col.map((block,block_idx) =>
+                      <div>
+                        <EditBox block={block} indexes={{row_idx, col_idx, block_idx}} {...actions} />
+                        <AddBlockBtn {...actions} indexes={{row_idx, col_idx, block_idx}} />
+                      </div>
+                    )
+                  } 
+                </Col>
+              
+              )
+            )
+          :
+          <LayoutBoxes {...this.props } />
+        }
+        
       </section>
     )
   }
