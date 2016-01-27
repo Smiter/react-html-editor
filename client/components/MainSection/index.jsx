@@ -4,6 +4,7 @@ import LayoutBoxes from '../LayoutBoxes'
 import EditBox from '../EditBox'
 import AddBlockBtn from '../AddBlockBtn'
 import style from './style.css'
+import ReactDOM from 'react-dom'
 
 
 class Col extends Component {
@@ -30,28 +31,38 @@ class MainSection extends Component {
     actions.showLayouts();
   }
 
+  generateHtml(){
+    const html = ReactDOM.findDOMNode(this.refs['blocks'])
+    console.log(html)
+  }
+
   render() {
     const { blocks: {blocks, layout, showLayouts}, actions } = this.props
 
     return (
       <section className={style.normal}>
         <button onClick={this.selectLayout.bind(this)}>select layout</button>
+        <button onClick={this.generateHtml.bind(this)}>generate html</button>
         { 
           !showLayouts ? 
-            blocks.map((row,row_idx) =>
-              row.map((col,col_idx) => 
-                <Col cols={row.length}>
-                  { col.map((block,block_idx) =>
-                      <div>
-                        <EditBox block={block} indexes={{row_idx, col_idx, block_idx}} {...actions} />
-                        <AddBlockBtn {...actions} indexes={{row_idx, col_idx, block_idx}} />
-                      </div>
+            <div ref="blocks">
+              {
+                blocks.map((row,row_idx) =>
+                  row.map((col,col_idx) => 
+                    <Col cols={row.length}>
+                      { col.map((block,block_idx) =>
+                          <div>
+                            <EditBox block={block} indexes={{row_idx, col_idx, block_idx}} {...actions} />
+                            <AddBlockBtn {...actions} indexes={{row_idx, col_idx, block_idx}} />
+                          </div>
+                        )
+                      } 
+                    </Col>
+                  
                     )
-                  } 
-                </Col>
-              
-              )
-            )
+                  )
+              }
+            </div>
           :
           <LayoutBoxes {...this.props } />
         }

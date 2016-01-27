@@ -37,10 +37,10 @@ let id = 10;
 export default handleActions({
   'add block' (state, action) {
     const {blockType, indexes: {row_idx, col_idx, block_idx}} = action.payload
-    let a = [...state]
-    let b = a[row_idx][col_idx];
+    let a = Object.assign({}, state, {})
+    let b = a.blocks[row_idx][col_idx];
     b = [...b.slice(0, block_idx+1), { type: blockType }, ...b.slice(block_idx+1)]
-    a[row_idx][col_idx] = b
+    a.blocks[row_idx][col_idx] = b
     return a
   },
 
