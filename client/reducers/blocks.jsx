@@ -9,9 +9,9 @@ const layouts = [
     ],
     [
       [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
-      [{ type: blocktypes.TEXT }]
     ]
   ],
+
   [
     [
       [{ type: blocktypes.TEXT}]       
@@ -19,12 +19,38 @@ const layouts = [
     [
       [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
       [{ type: blocktypes.TEXT }]
+    ]
+  ],
+    [
+    [
+      [{ type: blocktypes.TEXT}]       
+    ],
+    [
+      [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
+      [{ type: blocktypes.TEXT }],
+      [{ type: blocktypes.TEXT }]
+    ]
+  ],
+  [
+    [
+      [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
+      [{ type: blocktypes.TEXT }]
+    ],
+    [
+      [{ type: blocktypes.TEXT}]       
+    ],
+  ],
+  [
+    [
+      [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
+      [{ type: blocktypes.TEXT }]
     ],
     [
       [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
       [{ type: blocktypes.TEXT }]
-    ]
-  ]
+    ],
+  ],
+
 ]
 const initialState = {
   'blocks': layouts[0],
@@ -46,10 +72,10 @@ export default handleActions({
 
   'delete block' (state, action) {
     const {row_idx, col_idx, block_idx} = action.payload.indexes
-    let a = [...state]
-    let b = a[row_idx][col_idx];
+    let a = Object.assign({}, state, {})
+    let b = a.blocks[row_idx][col_idx];
     b = [...b.slice(0, block_idx), ...b.slice(block_idx+1)]
-    a[row_idx][col_idx] = b
+    a.blocks[row_idx][col_idx] = b
     return a
   },
 
