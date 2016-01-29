@@ -10,7 +10,7 @@ import ReactDOM from 'react-dom'
 class Col extends Component {
   render(){
       return (
-        <div style={{"float": "left", "width": 100/this.props.cols + "%"}}>
+        <div style={{"float": "left", "width": this.props.width}}>
           {this.props.children}
         </div>
       )
@@ -49,8 +49,8 @@ class MainSection extends Component {
               {
                 blocks.map((row,row_idx) =>
                   row.map((col,col_idx) => 
-                    <Col cols={row.length}>
-                      { col.map((block,block_idx) =>
+                    <Col width={col.width}>
+                      { col.col_blocks.map((block,block_idx) =>
                           <div>
                             <EditBox block={block} indexes={{row_idx, col_idx, block_idx}} {...actions} />
                             <AddBlockBtn {...actions} indexes={{row_idx, col_idx, block_idx}} />
@@ -61,6 +61,7 @@ class MainSection extends Component {
                   
                     )
                   )
+                
               }
             </div>
           :

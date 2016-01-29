@@ -5,10 +5,16 @@ import * as blocktypes from '../constants/blocktypes'
 const layouts = [
   [
     [
-      [{ type: blocktypes.TEXT}]       
+      {
+        width: "75%",
+        col_blocks: [{ type: blocktypes.TEXT}]
+      } 
     ],
     [
-      [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
+      {
+        width: "50%",
+        col_blocks: [{ type: blocktypes.IMAGE, src: ''}]
+      } 
     ]
   ],
 
@@ -17,7 +23,7 @@ const layouts = [
       [{ type: blocktypes.TEXT}]       
     ],
     [
-      [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
+      [{ type: blocktypes.IMAGE, src: '' }],
       [{ type: blocktypes.TEXT }]
     ]
   ],
@@ -26,14 +32,14 @@ const layouts = [
       [{ type: blocktypes.TEXT}]       
     ],
     [
-      [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
+      [{ type: blocktypes.IMAGE, src: '' }],
       [{ type: blocktypes.TEXT }],
       [{ type: blocktypes.TEXT }]
     ]
   ],
   [
     [
-      [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
+      [{ type: blocktypes.IMAGE, src: '' }],
       [{ type: blocktypes.TEXT }]
     ],
     [
@@ -42,11 +48,11 @@ const layouts = [
   ],
   [
     [
-      [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
+      [{ type: blocktypes.IMAGE, src: '' }],
       [{ type: blocktypes.TEXT }]
     ],
     [
-      [{ type: blocktypes.IMAGE, src: 'http://vacations2discover.com/media/cache/11/90/11905b46e07600590d8bbee8b994c57c.jpg' }],
+      [{ type: blocktypes.IMAGE, src: '' }],
       [{ type: blocktypes.TEXT }]
     ],
   ],
