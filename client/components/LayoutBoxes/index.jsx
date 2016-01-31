@@ -2,9 +2,6 @@ import React, { Component, PropTypes } from 'react'
 import style from './style.css'
 
 class LayoutBoxes extends Component {
-  constructor(props, context) {
-    super(props, context)
-  }
 
   changeLayout(idx){
     const { actions } = this.props;
@@ -12,8 +9,6 @@ class LayoutBoxes extends Component {
   }
 
   render() {
-    const { actions } = this.props;
-
     return (
       <section className={style.normal}>
        <ul className={style.layoutbox}>

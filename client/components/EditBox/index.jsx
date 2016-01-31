@@ -46,11 +46,16 @@ class EditBox extends Component {
     this.initMediumEditor();
   }
 
+  handleBlockTypeChange(){
+    //TODO: implement saving changes for text block type
+    console.log("change")
+  }
+
   getBlockByType(block){
     let html = <div>undefined block type</div>
     switch(block.type){
       case blocktypes.TEXT:
-        html = <div className={style.editorwrap}></div>
+        html = <div onKeyDown={this.handleChange} className={style.editorwrap}></div>
         break
       case blocktypes.IMAGE:
         html = <div>Upload image<input type="file" /></div>

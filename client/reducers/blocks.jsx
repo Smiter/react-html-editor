@@ -106,8 +106,6 @@ const initialState = {
   'showLayouts': true
 }
 
-let id = 10;
-
 export default handleActions({
   'add block' (state, action) {
     const {blockType, indexes: {row_idx, col_idx, block_idx}} = action.payload
