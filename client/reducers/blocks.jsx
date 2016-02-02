@@ -125,6 +125,14 @@ export default handleActions({
     return a
   },
 
+  'save text block' (state, action) {
+    const {content, indexes: {row_idx, col_idx, block_idx}} = action.payload
+    let a = Object.assign({}, state, {})
+    let b = a.blocks[row_idx][col_idx].col_blocks[block_idx];
+    b.content = content
+    return a
+  },
+
   'change layout' (state, action) {
     const layout = action.payload;
     return {

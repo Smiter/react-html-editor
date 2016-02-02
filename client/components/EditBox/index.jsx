@@ -3,6 +3,7 @@ import style from './style.css'
 import classnames from 'classnames'
 import EditBoxOptions from '../EditBoxOptions'
 import * as blocktypes from '../../constants/blocktypes'
+import TextBox from './TextBox'
 
 class EditBox extends Component {
   constructor(props, context) {
@@ -18,44 +19,11 @@ class EditBox extends Component {
     this.setState({"hover":false})
   }
 
-  initMediumEditor(){
-    const that = this;
-    this.editor = new MediumEditor("."+style.editorwrap, {
-      toolbar:{
-        // static: true,
-        // align: 'center',
-        // diffLeft: 100,
-        // diffTop: -100,
-        // sticky: false,
-        // updateOnEmptySelection: true,
-        buttons: ['bold', 'italic', 'underline', 'anchor', 'h1', 'h2', 'h3', 'orderedlist', 'unorderedlist', 'justifyLeft', 'justifyRight', 'justifyCenter', 'justifyFull', ]
-      },
-      anchorPreview: {
-        hideDelay: 500,
-        previewValueSelector: 'a',
-        showWhenToolbarIsVisible: true    
-      },
-      anchor: {
-        targetCheckbox: true,
-        targetCheckboxText: 'Open in new window'
-      }
-    });
-  }
-
-  componentDidMount(){
-    this.initMediumEditor();
-  }
-
-  handleBlockTypeChange(){
-    //TODO: implement saving changes for text block type
-    console.log("change")
-  }
-
   getBlockByType(block){
     let html = <div>undefined block type</div>
     switch(block.type){
       case blocktypes.TEXT:
-        html = <div onKeyDown={this.handleChange} className={style.editorwrap}></div>
+        html = <TextBox {...this.props} />
         break
       case blocktypes.IMAGE:
         html = <div>Upload image<input type="file" /></div>

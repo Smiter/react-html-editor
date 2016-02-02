@@ -52,7 +52,7 @@ class MainSection extends Component {
                     <Col width={col.width}>
                       { col.col_blocks.map((block,block_idx) =>
                           <div>
-                            <EditBox block={block} indexes={{row_idx, col_idx, block_idx}} {...actions} />
+                            <EditBox block={block} indexes={{row_idx, col_idx, block_idx}} actions={actions} />
                             <AddBlockBtn {...actions} indexes={{row_idx, col_idx, block_idx}} />
                           </div>
                         )
@@ -61,7 +61,7 @@ class MainSection extends Component {
                   
                     )
                   )
-                
+
               }
             </div>
           :
