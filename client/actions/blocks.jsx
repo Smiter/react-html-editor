@@ -6,4 +6,5 @@ export const deleteBlock = createAction('delete block')
 export const changeLayout = createAction('change layout')
 export const showLayouts = createAction('show layouts')
 export const saveTextBlock = createAction('save text block')
+export const changeBlockType = createAction('change block type')
 

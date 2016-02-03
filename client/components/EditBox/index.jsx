@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import EditBoxOptions from '../EditBoxOptions'
 import * as blocktypes from '../../constants/blocktypes'
 import TextBox from './TextBox'
+import ImageBox from './ImageBox'
 
 class EditBox extends Component {
   constructor(props, context) {
@@ -26,7 +27,7 @@ class EditBox extends Component {
         html = <TextBox {...this.props} />
         break
       case blocktypes.IMAGE:
-        html = <div>Upload image<input type="file" /></div>
+        html = <ImageBox {...this.props} />
         break
       case blocktypes.VIDEO:
         html = ( <div><input type="text" placeholder="Insert video link" />

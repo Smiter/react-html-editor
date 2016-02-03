@@ -24,14 +24,15 @@ class TextBox extends Component {
       anchor: {
         targetCheckbox: true,
         targetCheckboxText: 'Open in new window'
-      }
+      },
+      placeholder: false
     });
   }
 
   componentDidMount(){
     const {block} = this.props;
     this.initMediumEditor();
-    this.refs.editorwrap.innerHTML = block.content
+    this.refs.editorwrap.innerHTML = block.content || ""
   }
 
   handleChange(e){

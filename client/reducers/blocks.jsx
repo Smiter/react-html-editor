@@ -142,6 +142,14 @@ export default handleActions({
     }
   },
 
+  'change block type' (state, action) {
+    const {type, indexes: {row_idx, col_idx, block_idx}} = action.payload
+    let a = Object.assign({}, state, {})
+    let b = a.blocks[row_idx][col_idx].col_blocks[block_idx];
+    b.type = type
+    return a
+  },
+
   'show layouts' (state, action) {
     return Object.assign({}, state, {showLayouts: true})
   }
