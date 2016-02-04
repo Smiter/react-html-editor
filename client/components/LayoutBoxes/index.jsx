@@ -1,6 +1,37 @@
 import React, { Component, PropTypes } from 'react'
 import style from './style.css'
 
+const layouts = [
+  {
+    'class': 'col1',
+    'txt': '1 Column'
+  },
+  {
+    'class': 'col12',
+    'txt': '1:2 Column'
+  },
+  {
+    'class': 'col13',
+    'txt': '1:3 Column'
+  },
+  {
+    'class': 'col21',
+    'txt': '2:1 Column'
+  },
+  {
+    'class': 'col2',
+    'txt': '2:2 Column'
+  },
+  {
+    'class': 'leftsb',
+    'txt': 'Left Sidebar'
+  },
+  {
+    'class': 'rightsb',
+    'txt': 'Right Sidebar'
+  }
+]
+
 class LayoutBoxes extends Component {
 
   changeLayout(idx){
@@ -11,15 +42,18 @@ class LayoutBoxes extends Component {
   render() {
     return (
       <section className={style.normal}>
-       <ul className={style.layoutbox}>
-       <li onClick={this.changeLayout.bind(this, 0)}><p>1 Column</p><a ><div className={style.col1}></div></a></li>
-       <li onClick={this.changeLayout.bind(this, 1)}><p>1:2 Column</p><a><div className={style.col12}></div></a></li>
-       <li onClick={this.changeLayout.bind(this, 2)}><p>1:3 Column</p><a><div className={style.col13}></div></a></li>
-       <li onClick={this.changeLayout.bind(this, 3)}><p>2:1 Column</p><a><div className={style.col21}></div></a></li>
-       <li onClick={this.changeLayout.bind(this, 4)}><p>2:2 Column</p><a><div className={style.col2}></div></a></li>
-       <li><p>Left Sidebar</p><a><div className={style.leftsb}></div></a></li>
-       <li><p>Right Sidebar</p><a><div className={style.rightsb}></div></a></li>
-       </ul>
+        <ul className={style.layoutbox}>
+          {
+            layouts.map((l, index) =>
+              <li onClick={this.changeLayout.bind(this, index)}>
+                <p>{l.txt}</p>
+                <a>
+                  <div className={style[l.class]}></div>
+                </a>
+              </li>
+            )
+          }
+        </ul>
       </section>
     )
   }

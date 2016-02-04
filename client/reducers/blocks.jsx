@@ -98,6 +98,42 @@ const layouts = [
       }
     ],
   ],
+  [
+    [
+      {
+        width: "100%",
+        col_blocks: [{ type: blocktypes.TEXT }]
+      }
+    ],
+    [
+      {
+        width: "30%",
+        col_blocks: [{ type: blocktypes.TEXT }]
+      },
+      {
+        width: "70%",
+        col_blocks: [{ type: blocktypes.TEXT }]
+      }
+    ],
+  ],
+  [
+    [
+      {
+        width: "100%",
+        col_blocks: [{ type: blocktypes.TEXT }]
+      }
+    ],
+    [
+      {
+        width: "70%",
+        col_blocks: [{ type: blocktypes.TEXT }]
+      },
+      {
+        width: "30%",
+        col_blocks: [{ type: blocktypes.TEXT }]
+      }
+    ],
+  ],
 
 ]
 const initialState = {
