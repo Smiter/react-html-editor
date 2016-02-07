@@ -1,28 +1,34 @@
-import React, { Component, PropTypes } from 'react'
-import style from './style.css'
-import * as blocktypes from '../../constants/blocktypes'
+import React, { Component, PropTypes } from 'react';
+import style from './style.css';
+import * as blocktypes from '../../constants/blocktypes';
 
-class AddBlockBtn extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {"show_links": false}
+export default class AddBlockBtn extends Component {
+
+  static propTypes = {
+    indexes: PropTypes.object.isRequired
   }
 
-  showLinks(){
-    this.setState({"show_links": true})
+  constructor(props, context) {
+    super(props, context);
+    this.state = { 'showLinks': false };
+  }
+
+  showLinks() {
+    this.setState({ 'showLinks': true });
   }
 
   addEditBox(blockType) {
-    this.props.addBlock({"indexes": this.props.indexes, blockType: blockType})
-    this.setState({"show_links": false})
+    const { indexes } = this.props;
+    this.props.addBlock({ 'indexes': indexes, blockType: blockType });
+    this.setState({ 'showLinks': false });
   }
 
   render() {
-
-    let element
-    if(this.state.show_links){
+    const { showLinks } = this.state;
+    let element;
+    if (showLinks) {
       element = (
-        <ul className={style["content-links"]}>
+        <ul className={style.contentLinks}>
           <li onClick={::this.addEditBox.bind(this, blocktypes.TEXT)}>
             Text
           </li>
@@ -37,9 +43,9 @@ class AddBlockBtn extends Component {
           </li>
         </ul>
       )
-    }else{
+    } else {
       element = (
-        <button onClick={::this.showLinks} className={style["add-button"]}>
+        <button onClick={::this.showLinks} className={style.addButton}>
         Add block section
         </button>
       )
@@ -48,12 +54,6 @@ class AddBlockBtn extends Component {
       <section className={style.normal}>
         {element}
       </section>
-    )
+    );
   }
 }
-
-AddBlockBtn.propTypes = {
-  indexes: PropTypes.object.isRequired
-}
-
-export default AddBlockBtn
