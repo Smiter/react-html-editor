@@ -1,44 +1,45 @@
 
-import React, { Component, PropTypes } from 'react'
-import LayoutBoxes from '../LayoutBoxes'
-import EditBox from '../EditBox'
-import AddBlockBtn from '../AddBlockBtn'
-import style from './style.css'
-import ReactDOM from 'react-dom'
-
+import React, { Component, PropTypes } from 'react';
+import LayoutBoxes from '../LayoutBoxes';
+import EditBox from '../EditBox';
+import AddBlockBtn from '../AddBlockBtn';
+import style from './style.css';
+import ReactDOM from 'react-dom';
 
 class Col extends Component {
-  render(){
-      return (
-        <div style={{"float": "left", "width": this.props.width}}>
-          {this.props.children}
-        </div>
-      )
+  render() {
+    const { children, width } = this.props;
+    return (
+      <div style={{"float": "left", "width": width}}>
+        {children}
+      </div>
+    );
   }
 }
 
-class MainSection extends Component {
+export default class MainSection extends Component {
 
-  constructor(props, context) {
-    super(props, context)
-    this.state = {
-      is_show_layouts: false
-    }
+  static propTypes = {
+    blocks: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
   }
 
-  selectLayout(){
-    const { actions } = this.props
+  constructor(props, context) {
+    super(props, context);
+    this.state = { is_show_layouts: false };
+  }
+
+  selectLayout() {
+    const { actions } = this.props;
     actions.showLayouts();
   }
 
-  generateHtml(){
-    const html = ReactDOM.findDOMNode(this.refs['blocks'])
-    console.log(html)
+  generateHtml() {
+    const html = ReactDOM.findDOMNode(this.refs.blocks);
   }
 
   render() {
-    const { blocks: {blocks, layout, showLayouts}, actions } = this.props
-
+    const { blocks: { blocks, layout, showLayouts }, actions } = this.props
     return (
       <section className={style.normal}>
         <button onClick={this.selectLayout.bind(this)}>select layout</button>
@@ -51,32 +52,21 @@ class MainSection extends Component {
                   row.map((col,col_idx) => 
                     <Col width={col.width}>
                       { col.col_blocks.map((block,block_idx) =>
-                          <div>
-                            <EditBox block={block} indexes={{row_idx, col_idx, block_idx}} actions={actions} />
-                            <AddBlockBtn {...actions} indexes={{row_idx, col_idx, block_idx}} />
-                          </div>
+                        <div key={block_idx}>
+                          <EditBox block={block} indexes={{row_idx, col_idx, block_idx}} actions={actions} />
+                          <AddBlockBtn {...actions} indexes={{row_idx, col_idx, block_idx}} />
+                        </div>
                         )
                       } 
                     </Col>
-                  
                     )
                   )
-
               }
             </div>
           :
           <LayoutBoxes {...this.props } />
         }
-        
       </section>
-    )
+    );
   }
-
 }
-
-MainSection.propTypes = {
-  blocks: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
-}
-
-export default MainSection

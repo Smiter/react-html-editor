@@ -7,7 +7,7 @@ export default class TextBox extends Component {
 
   static propTypes = {
     block: PropTypes.object.isRequired,
-    actions: PropTypes.func.isRequired
+    actions: PropTypes.object.isRequired
   }
 
   initMediumEditor() {

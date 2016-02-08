@@ -1,25 +1,26 @@
 
-import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
-import MainSection from '../../components/MainSection'
-import * as BlocksActions from '../../actions/blocks'
-import style from './style.css'
+import React, { Component, PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import MainSection from '../../components/MainSection';
+import * as BlocksActions from '../../actions/blocks';
+import style from './style.css';
 
 class App extends Component {
+  
+  static propTypes = {
+    blocks: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
+  }
+
   render() {
-    const { blocks, actions } = this.props
+    const { blocks, actions } = this.props;
     return (
       <div className={style.normal}>
         <MainSection blocks={blocks} actions={actions} />
       </div>
-    )
+    );
   }
-}
-
-App.propTypes = {
-  blocks: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {

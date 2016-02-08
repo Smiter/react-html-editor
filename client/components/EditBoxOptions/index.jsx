@@ -34,7 +34,7 @@ export default class EditBoxOptions extends Component {
         <div>
           {
             options.map( option => 
-              <div onClick={() => changeBlockType({'type': option.type, 'indexes': indexes})}>{option.label}</div>
+              <div key={option.type} onClick={() => changeBlockType({'type': option.type, 'indexes': indexes})}>{option.label}</div>
             )
           }
           <div onClick={() => deleteBlock({"indexes": this.props.indexes})}>delete</div>

@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react'
-import style from './style.css'
+import React, { Component, PropTypes } from 'react';
+import style from './style.css';
 
 const layouts = [
   {
@@ -30,13 +30,17 @@ const layouts = [
     'class': 'rightsb',
     'txt': 'Right Sidebar'
   }
-]
+];
 
-class LayoutBoxes extends Component {
+export default class LayoutBoxes extends Component {
 
-  changeLayout(idx){
+  static propTypes = {
+    actions: PropTypes.object.isRequired
+  }
+
+  changeLayout(idx) {
     const { actions } = this.props;
-    actions.changeLayout(idx)
+    actions.changeLayout(idx);
   }
 
   render() {
@@ -44,23 +48,17 @@ class LayoutBoxes extends Component {
       <section className={style.normal}>
         <ul className={style.layoutbox}>
           {
-            layouts.map((l, index) =>
-              <li onClick={this.changeLayout.bind(this, index)}>
-                <p>{l.txt}</p>
+            layouts.map((layout, index) =>
+              <li key={index} onClick={this.changeLayout.bind(this, index)}>
+                <p>{layout.txt}</p>
                 <a>
-                  <div className={style[l.class]}></div>
+                  <div className={style[layout.class]}></div>
                 </a>
               </li>
             )
           }
         </ul>
       </section>
-    )
+    );
   }
 }
-
-LayoutBoxes.propTypes = {
-  actions: PropTypes.object.isRequired
-}
-
-export default LayoutBoxes
