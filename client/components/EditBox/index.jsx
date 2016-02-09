@@ -28,6 +28,13 @@ export default class EditBox extends Component {
   getBlockByType(block) {
     let html = (<div>undefined block type</div>);
     switch(block.type){
+      case blocktypes.HTML:
+        html = (
+          <div>
+            <textarea placeholder="set you html"></textarea>
+          </div>
+        )
+        break;
       case blocktypes.TEXT:
         html = (<TextBox {...this.props} />);
         break;

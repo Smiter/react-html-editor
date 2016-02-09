@@ -4,6 +4,10 @@ import style from './style.css';
 
 const options = [
   {
+    'type': blocktypes.HTML,
+    'label': 'set as html'
+  },
+  {
     'type': blocktypes.TEXT,
     'label': 'set as text'
   },
